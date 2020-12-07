@@ -15,6 +15,7 @@ class SeatFinder(object):
         for line in f:
             boarding_pass = line.strip()
             boarding_passes.append(boarding_pass)
+        f.close()
         return boarding_passes
 
     def find_seat_ids(self, boarding_passes):
