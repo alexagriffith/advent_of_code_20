@@ -13,6 +13,7 @@ class ErrorEncoder(object):
         contiguous_nums_sum = self.find_contiguous_nums(nums, answer)
         end2 = time.time()
         return contiguous_nums_sum, end1 - start, end2 - start
+
     def read_input(self):
         f = open(self.input_file, "r")
         nums = []
