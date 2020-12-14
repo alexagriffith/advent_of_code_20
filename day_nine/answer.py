@@ -9,9 +9,10 @@ class ErrorEncoder(object):
         start = time.time()
         nums = self.read_input()
         answer = self.compare_sums(nums)
-        end = time.time()
-        return answer, end - start
-
+        end1 = time.time()
+        contiguous_nums_sum = self.find_contiguous_nums(nums, answer)
+        end2 = time.time()
+        return contiguous_nums_sum, end1 - start, end2 - start
     def read_input(self):
         f = open(self.input_file, "r")
         nums = []
@@ -47,7 +48,26 @@ class ErrorEncoder(object):
                 return True
         return False
 
+    def find_contiguous_nums(self, nums, answer):
+        contig_nums = []
+        sum = 0
+        idx = 0
 
-# result = ErrorEncoder(input_file='input_test.txt', preamble=5).execute()
-result, time = ErrorEncoder().execute()
-print(result, time)
+        while sum != answer:
+            if sum > answer:
+                sum -= contig_nums.pop(0)
+            if sum < answer:
+                idx += 1
+                sum += nums[idx]
+                contig_nums.append(nums[idx])
+
+        contig_nums = sorted(contig_nums)
+        print(contig_nums,sum)
+        return contig_nums[0] + contig_nums[-1]
+
+
+
+
+# result, time1, time2 = ErrorEncoder(input_file='input_test.txt', preamble=5).execute()
+result, time1, time2 = ErrorEncoder().execute()
+print(result, time1, time2)
