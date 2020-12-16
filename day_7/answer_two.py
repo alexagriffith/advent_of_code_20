@@ -1,5 +1,4 @@
 import re
-from collections import defaultdict
 
 class BagProcessor(object):
     def __init__(self, input_file='input.txt'):
@@ -8,7 +7,6 @@ class BagProcessor(object):
 
     def execute(self):
         all_bags = self.read_rules()
-        print(all_bags)
         return self.get_num_bags(all_bags, 'shiny gold') - 1
 
 

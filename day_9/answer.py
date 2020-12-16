@@ -63,7 +63,6 @@ class ErrorEncoder(object):
                 contig_nums.append(nums[idx])
 
         contig_nums = sorted(contig_nums)
-        print(contig_nums,sum)
         return contig_nums[0] + contig_nums[-1]
 
 
